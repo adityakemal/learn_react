@@ -4,6 +4,9 @@ import Footer from './Footer.js'
 import Header from './Header.js'
 import Images from './Images.js'
 import FormChange from './FormChange.js'
+import PageProps from './PageProps.js'
+import ArrayFromState from './ArrayFromState.js'
+import AddData from './AddData.js'
 
 class App extends Component {
   state = {
@@ -16,7 +19,15 @@ class App extends Component {
     user : {
       name: 'kemal',
       age : 26
-    }
+    },
+    data: [
+      {framework : 'NodeJS', language : 'JavaScript'},
+      {framework : 'SailJS', language : 'JavaScript'},
+      {framework : 'React', language : 'JavaScript'},
+      {framework : 'ROR', language : 'Ruby'},
+      {framework : 'Django', language : 'Python'},
+      {framework : 'Laravel', language : 'PHP'},
+    ]
   }
 
   deleteTodo = id =>{
@@ -45,6 +56,24 @@ class App extends Component {
   alertCopy = () =>{
     alert('F U C K Y O U !')
   }
+  //change array ArrayFromState to JavaScript languange only
+  onlyJs = (e)=>{
+    console.log('wow');
+    const data = this.state.data.filter((dat)=>{ return dat.language === "JavaScript"})
+    this.setState({
+      data
+    })
+  }
+
+  addData = (data) =>{
+    // console.log(data);
+    let datas = [...this.state.data, data]
+    console.log(datas);
+    this.setState({
+      data : datas
+    })
+  }
+
   render() {
     return (
       <div className="App container">
@@ -70,6 +99,10 @@ class App extends Component {
           <Images linknya ='https://media.travelingyuk.com/wp-content/uploads/2018/03/Rekomendasi-Empat-Nasi-Padang-Enak-Si-Makanan-Sejuta-Umat-di-Malang-cover.jpg' ukuran='600px' />
         </div>
         <FormChange />
+        <PageProps carname="lambo" speed="2000km/h" color="black and yellow" />
+        <ArrayFromState data={this.state.data} />
+        <button className="btn btn-info mx-3" onClick={this.onlyJs} type="button">JavaScript only</button>
+        <AddData addData={this.addData} />
         <Footer />
       </div>
     );
