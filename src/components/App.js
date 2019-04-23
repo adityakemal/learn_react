@@ -7,6 +7,7 @@ import FormChange from './FormChange.js'
 import PageProps from './PageProps.js'
 import ArrayFromState from './ArrayFromState.js'
 import AddData from './AddData.js'
+import Hpsc from './HandlPropStateClass.js'
 
 class App extends Component {
   state = {
@@ -103,6 +104,7 @@ class App extends Component {
         <ArrayFromState data={this.state.data} />
         <button className="btn btn-info mx-3" onClick={this.onlyJs} type="button">JavaScript only</button>
         <AddData addData={this.addData} />
+        <Hpsc list="ayo berburu kambing" />
         <Footer />
       </div>
     );
